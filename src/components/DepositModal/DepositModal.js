@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
-import './TransferModal.scss';
+import './DepositModal.scss';
 import history from '../../history';
-import IconButton from '@material-ui/core/IconButton';
-import Snackbar from '@material-ui/core/Snackbar';
-class TransferModal extends Component {
+ 
+class DepositModal extends Component {
     state = {
         investment:'',
-        fromusername:'',
-        tousername: '',
+        username:'',
         amount: '',
         errinvestment:'',
-        errfromusername:'',
-        errtousername: '',
+        errusername:'',
         erramount: '',
-        submitbtn: false,
-        snackbarManger : '',
-        snackbaropen: false, 
-        snackbarmsg:''
-    }
-    snackbarOpen= () => {
-        this.setState({snackbaropen:true});
-    }
-    snackbarClose = (e) => {
-        this.setState({snackbaropen:false});
+        submitbtn: ''
     }
     onChangeInvestment = e => {
         if(!e.target.value || e.target.value !== "investment"){
@@ -35,23 +23,14 @@ class TransferModal extends Component {
         }
         
     }
-    onChangeFromusername = e => {
-        this.setState({fromusername: e.target.value});
+    onChangeUsername = e => {
+        this.setState({username: e.target.value});
             if(e.target.value){
-                this.setState({errfromusername:''})
+                this.setState({errusername:''})
             }
             else{
-                this.setState({errfromusername:'* Error empty field'})
+                this.setState({errusername:'* Error empty field'})
             }
-    }
-    onChangeTousername = e => {
-        this.setState({tousername: e.target.value});
-        if(e.target.value){
-            this.setState({errtousername:''})
-        }
-        else{
-            this.setState({errtousername:'* Error empty field'})
-        }
     }
     onChangeAmount = e => {
 
@@ -66,14 +45,12 @@ class TransferModal extends Component {
         }   
     }
     validationSubmit(){
-        if(this.state.investment && this.state.fromusername && this.state.tousername && this.state.amount){
+        if(this.state.investment && this.state.username && this.state.amount){
             this.setState({submitbtn : true})
-            this.snackbarOpen();
-          
+            history.push('/');
         }else{
-            if(!this.state.fromusername) this.setState({errfromusername:'* Error empty field'});
+            if(!this.state.username) this.setState({errusername:'* Error empty field'});
             if(!this.state.investment)this.setState({errinvestment:'* Error choose one'});
-            if(!this.state.tousername)this.setState({errtousername:'* Error empty field'});
             if(!this.state.amount)this.setState({erramount:'* Error empty input'});
             this.setState({submitbtn : false})
         }
@@ -82,9 +59,14 @@ class TransferModal extends Component {
     onFormSubmit = event => { 
         event.preventDefault();
         this.validationSubmit();
+        if(this.state.submitbtn){
+           
+        }else{
+            console.log("go back");
+        }
     };
   render(){
- 
+     
     return (
         <div className="transfer-container">
             <div className="transfer-form-wrapper">
@@ -103,15 +85,9 @@ class TransferModal extends Component {
                             <div className="text-danger">{this.state.errinvestment}</div>
                         </div>
                         <div className="form-group">
-                            <input type="text" onChange={this.onChangeFromusername} value={this.state.fromusername}
-                             className={`form-control + ${this.state.errfromusername !== '' ? 'error-mess' : ''}`} id="fromuserName" placeholder="From: Username">
-                             </input> <div className="text-danger">{this.state.errfromusername}</div>   
-                        </div>
-                        <div className="form-group">
-                            <input type="text" onChange={this.onChangeTousername} value={this.state.tousername}
-                             className={`form-control + ${this.state.errtousername !== '' ? 'error-mess' : ''}`}
-                             id="touserName" placeholder="To: Username"></input>
-                             <div className="text-danger">{this.state.errtousername}</div> 
+                            <input type="text" onChange={this.onChangeUsername} value={this.state.username}
+                             className={`form-control + ${this.state.errusername !== '' ? 'error-mess' : ''}`} id="fromuserName" placeholder="Username">
+                             </input> <div className="text-danger">{this.state.errusername}</div>   
                         </div>
                         <div className="form-group">
                             <input   value={this.state.amount} onChange={this.onChangeAmount}
@@ -119,26 +95,9 @@ class TransferModal extends Component {
                              type="number"  id="amount" placeholder="Amount"></input>
                             <div className="text-danger">{this.state.erramount}</div> 
                         </div>
-                       
-                        <Snackbar 
-                        anchorOrigin={{vertical: 'top', horizontal:'center'}}
-                        open = { this.state.snackbaropen}
-                        autoHideDuration= {1500}
-                        onClose = { this.snackbarClose}
-                        message= {<span id="message-id">successfully submit</span>}
-                        action={[
-                        <IconButton
-                        key="close"
-                        arial-label="Close"
-                        color="inherit"
-                        onClick={this.snackbarClose}
-                        >X</IconButton>
-                        ]}
-                        />
                         <div>
-                            <button type="submit" name="transfer" className="btn btn-info transfer-btn">Transfer</button>
+                            <button type="submit" name="transfer" className="btn btn-info transfer-btn">Deposit</button>
                         </div>
-                        
                     </form>   
                 </div>
             </div>
@@ -148,4 +107,4 @@ class TransferModal extends Component {
 }
 
 
-export default TransferModal;
+export default DepositModal;

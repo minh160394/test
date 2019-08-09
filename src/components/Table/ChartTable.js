@@ -29,18 +29,17 @@ class ChartTable extends Component {
 
   const columns = [{
     accessor: 'name', // String-based value accessors!
-
-  }, {
+    
+    }, 
+    {
     accessor: 'age',
-
-}, {
+    },
+    {
     id: 'dollar',
-  accessor: (data) => {
-      return '$' + data.dollar;
-  },
-
-
-}]
+    accessor: (data) => {
+      return '$' + data.dollar;},
+    },
+]
 
     return(
         <div className="Charttable-container">

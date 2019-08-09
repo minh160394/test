@@ -1,5 +1,8 @@
 export { default as LeftSidebar } from './Sidebar/Sidebar';
 export { default as TransferModal } from './TransferModal/TransferModal';
+export { default as WithDrawModal } from './WithDrawModal/WithDrawModal';
+export { default as DepositModal } from './DepositModal/DepositModal';
+export { default as GUpdateModal } from './GUpdateModal/GUpdateModal';
 export { default as DoughnutChart } from './DoughnutChart/DoughnutChart';
 export { default as LineChart } from './LineChart/LineChart';
 export { default as ChartTable } from './Table/ChartTable';

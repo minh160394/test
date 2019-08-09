@@ -28,8 +28,12 @@
                 margin: 30px;
             }
         }
-
-
+        .transfer-modal-container-item{
+            width: 572px;
+        }
+        .transfer-modal-container-item.right{
+            width: 552px;
+        }
 
         .footer-container{
             min-height: 8vh;

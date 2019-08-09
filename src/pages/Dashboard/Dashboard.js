@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Dashboard.scss';
 
-import { LeftSidebar, TransferModal, DoughnutChart, LineChart, ChartTable, TransactionTable, Footer } from './../../components';
+import { LeftSidebar,GUpdateModal ,TransferModal,DepositModal,WithDrawModal, DoughnutChart, LineChart, ChartTable, TransactionTable, Footer } from './../../components';
 
 class Dashboard extends Component{
 
@@ -18,7 +18,24 @@ class Dashboard extends Component{
                     </div>
                     <div className="graph-container"><LineChart /></div>
                     <div className="table-container"><TransactionTable /></div>
-                    <div className="transfer-modal-container"><TransferModal/></div>
+                    <div className="transfer-modal-container container">
+                        <div className="row justify-content-around">
+                            <div className="transfer-modal-container-item ">
+                                <WithDrawModal/>
+                            </div>                    
+                            <div className="transfer-modal-container-item right">
+                                <DepositModal/>
+                            </div>
+                        </div>    
+                        <div className="row justify-content-around">
+                            <div className="transfer-modal-container-item  ">
+                                <TransferModal/>
+                            </div>
+                            <div className="transfer-modal-container-item right">
+                                <GUpdateModal/>
+                            </div>
+                        </div>
+                    </div>
                     <div className="footer-container"><Footer/></div>
                 </div>
             </div>
