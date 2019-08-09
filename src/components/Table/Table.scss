@@ -1,13 +1,17 @@
 .Charttable-container{
      min-width: 25vw;
-     margin: 40px;
-     padding: 15px;
+     margin: 20px;
+     padding: 20px 10px 0 10px; 
+     width: 517px;
      // border: 1px solid black;
      box-shadow: 1px 2px 6px 3px #DBDBDB;
      border-radius: 5px;
-
+     height: 334.06px;
     .rt-tr-group{
         line-height: 2;
+    }
+    .ReactTable {
+        border: 0px;
     }
 }
 .transactiontable-container{

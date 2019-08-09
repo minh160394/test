@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import './Table.scss';
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-
+import _ from 'lodash';
 class ChartTable extends Component {
     render(){
     const data = [{
@@ -29,7 +29,7 @@ class ChartTable extends Component {
 
   const columns = [{
     accessor: 'name', // String-based value accessors!
-    
+    Footer: 'Total in CAD'
     }, 
     {
     accessor: 'age',
@@ -37,12 +37,15 @@ class ChartTable extends Component {
     {
     id: 'dollar',
     accessor: (data) => {
-      return '$' + data.dollar;},
+      return '$' + parseFloat(data.dollar).toFixed(2)},
+      Footer: '$' +
+       parseFloat( _.sumBy(data, 'dollar')).toFixed(2),
     },
+   
 ]
 
     return(
-        <div className="Charttable-container">
+        <div className="Charttable-container table-striped">
         <ReactTable className="-striped"
         data={data}
         columns={columns}
