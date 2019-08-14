@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import './Dashboard.scss';
-
+import {getuserBalance,getuserTransacionHistory} from '../../actions/index';
+import {connect} from 'react-redux';
 import { LeftSidebar,GUpdateModal ,TransferModal,DepositModal,WithDrawModal, DoughnutChart, LineChart, ChartTable, TransactionTable, Footer } from './../../components';
 
 class Dashboard extends Component{
-
+    componentWillMount(){
+        this.props.getuserBalance(this.props.username);
+        this.props.getuserTransacionHistory(this.props.username);
+   
+    };
+    componentWillUnmount(){
+        console.log("unmount");
+    };
+  
     render(){
          return (
             <div className="dashboard-container">
@@ -22,7 +31,7 @@ class Dashboard extends Component{
                         <div className="row justify-content-around">
                             <div className="transfer-modal-container-item ">
                                 <WithDrawModal/>
-                            </div>                    
+                            </div>                     
                             <div className="transfer-modal-container-item right">
                                 <DepositModal/>
                             </div>
@@ -41,9 +50,10 @@ class Dashboard extends Component{
             </div>
         );
     }
-
-
-
 }
-
-export default Dashboard;
+const mapStateToProps = (state) => {
+    return {
+        username : state.UserStore.userId,
+    }
+}
+export default connect(mapStateToProps,{getuserBalance,getuserTransacionHistory})(Dashboard);

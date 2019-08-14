@@ -4,3 +4,5 @@ export const TOKEN_FAILED = 'TOKEN_FAILED';
 export const SET_USER_ID = 'SET_USER_ID';
 export const RESET = 'RESET';
 export const LOGOUT = 'LOGOUT';
+export const USER_BALANCE = 'USER_BALANCE';
+export const TRANSACTION_HISTORY = 'TRANSACTION_HISTORY';

@@ -15,13 +15,13 @@ import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas/rootSaga';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers/rootReducer';
-
+import reduxThunk from 'redux-thunk';
 //styling
 import './index.css';
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(rootReducer,applyMiddleware(sagaMiddleware));
-sagaMiddleware.run(rootSaga);
+const store = createStore(rootReducer,applyMiddleware(reduxThunk));
+//sagaMiddleware.run(rootSaga);
 
 const messages = {
     'en': messages_en
